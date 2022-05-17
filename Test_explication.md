@@ -10,16 +10,16 @@
 
 # Commown Shared Wallet - Proxy Factory - Tests <a name="commownsw-proxy-factory"></a>
 
-## Goal of the contract
+### Goal of the contract
 The goal of that contract is to deploy the main logic contract first. Then, when user is creating a CSW, it calls the createProxy function. When users will interact with the logic contract, states variables will be stored in that instance.
 So, tests here concerns all these functionnalities.
 
-## 01_CommownSWProxyFactory__01_deployProxyFactory
+### 01_CommownSWProxyFactory__01_deployProxyFactory
 #### 01_01_01: it deploys the CommownSWProxyFactory and the CommownSW
 Single test here to ensure both contracts are deployed
 We can access to proxy factory state variable logic representing the logic contract. It's then a success.
 
-## 01_CommownSWProxyFactory__02_createProxy
+### 01_CommownSWProxyFactory__02_createProxy
 #### 01__02-01: it deploys a proxy from sign0
 Once the CSW Proxy Factory deployed, sign0 calls createProxy to create a proxy, and it does.
 #### 01__02-02: it deploys a proxy from sign0 and emit en event
@@ -27,7 +27,7 @@ Once the CSW Proxy Factory deployed, sign0 calls createProxy to create a proxy, 
 #### 01__02-03: it deploys a proxy from sign1
 As sign0 is also the owner of the contract factory, this test here is to ensure it works too with another user.
 
-## 01_CommownSWProxyFactory__03_stateVariable
+### 01_CommownSWProxyFactory__03_stateVariable
 #### 01__03-01: it saves the proxy in the global proxiesList
 To ensure our application manage all the proxies created we need to store there contract addresses in a state mapping available in the CSW ProxyFactory.
 ### 01__03-02: it saves the proxy in commownProxyPerUser for each 'owners'
@@ -40,19 +40,19 @@ That one is trickier as we create two proxies. The first one, created by sign0, 
 
 # Commown Shared Wallet - Logic contract - Tests <a name="commownsw"></a>
 
-## Goal of the contract
+### Goal of the contract
 The goal of that contract is to handle all the logic of a Commown Shared Wallet. So we will find here all the features waited : deposit/withdraw funds, creating a pocket of investment...
 
-## 02_CommownSW__01_deployementAndInitializer
+### 02_CommownSW__01_deployementAndInitializer
 First, we prepare the global use case by deploying the CSW Proxy Factory hence the CSW logic, then we create a proxy from sign0 and get the proxy address. 
-### 02__01-01: in the proxy it reads the initialize state of CommownSW
+#### 02__01-01: in the proxy it reads the initialize state of CommownSW
 That test basically confirms we can read state variables in the proxy contract by attaching this proxy address to the logic contract.
-### 02__01-02: Owner(Admin) of CommownSW is ProxyFactory
+#### 02__01-02: Owner(Admin) of CommownSW is ProxyFactory
 For now, the owner of the CSW Logic is the CSW Proxy Factory. We want to change that to ensure it is a multi sig possessed by the CSW Teams.
-### 02__01-03: it handles different state per proxy
+#### 02__01-03: it handles different state per proxy
 We complete here the before each statement by creating a new proxy from sign0, and we want to see each proxy has its own state variables.
 
-## 02_CommownSW__02_ReceiveAndWithdrawETH
+### 02_CommownSW__02_ReceiveAndWithdrawETH
 This group of test is for testing one of the main features of the CSW : add and retreive investment in ETH.
 Before each test, we prepare the global use case by deploying the CSW Proxy Factory hence the CSW logic, then we create a proxy from sign0 and get the proxy address.
 #### 02__02-01: it receives ETH for a CSW owner, updates his balance and updates the global balance
@@ -71,7 +71,7 @@ Event emitted when withdraw.
 #### 02__02-07: it handles different deposit of different users and withdraw dont affect others
 We ensure in that test that when a user does a deposit/withdraw it does not affect other users.
 
-## 02_CommownSW__03_createPocket
+### 02_CommownSW__03_createPocket
 A pocket is mandatory to invest in something, because we have to track to whom the transaction is destinated, and the amount fixed each user invest. That way, we can, once the item sold, increments/decrements proportionally users' balance.
 For that usecase, we deploy the proxy factory, create a proxy, and we simulate a function call of a smart contract invented for this occasion. We use the Interface from ethers.utils to get the bytes data associated to that call.
 #### 02__03-01: it proposes a Pocket which can be retrieve from array
