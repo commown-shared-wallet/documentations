@@ -72,7 +72,7 @@ That's the main reason why we decided to use a proxy factory in solidity, which 
 The proxy factory contract's goal is to create proxies for users willing to build a Commown Shared Wallet. It also manages the proxy list, and saves the bound between a user and his shared wallet. All this is permited by states mapping : `mapping(address => address[]) public commownProxiesPerUser`,`mapping(address => uint256) public nbProxiesPerUser`.
 
 ### Create proxy
-Proxy are created using the `ERC1967Proxy` from OpenZeppelin which will call the `initilize` function with a selector, to create an instance of an UUPS.
+Proxy are created using the `ERC1967Proxy` from OpenZeppelin which will call the `initialize` function with a selector, to create an instance of an UUPS.
 
 ### For future updates
 At this time, the proxy factory is not updatable, that means, if we want to update it we have to replace it with another, and be sure that the storage of the first one is get for the new proxy factory. It would be nicer to have that proxy factory, itself updatable or at least to be able to change that address of the logic contract though it delegates call.
