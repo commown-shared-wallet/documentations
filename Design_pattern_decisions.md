@@ -35,7 +35,7 @@ So, the first step was to choose, which type of proxy we need.
 There are several proxy models, each adapted to different use cases.
 
 ### Clone
-The "clone" one is the cheapest one, but it's not really a proxy for upgradable purpose. The only thing it does is cloning contract functionality in an immutable way and delegate all calls to the main contract. So it does not allow for upgrade the logic contract. Thus, it is very usefull once you know taht our contract is safe and well designed or when your contract is mature and you are pretty sure it will not need any further upgrades.  
+The "clone" one is the cheapest one, but it's not really a proxy for upgradable purpose. The only thing it does is cloning contract functionality in an immutable way and delegate all calls to the main contract. So it does not allow for upgrade the logic contract. Thus, it is very usefull once you know that our contract is safe and well designed or when your contract is mature and you are pretty sure it will not need any further upgrades.  
 See [eip-1167](https://eips.ethereum.org/EIPS/eip-1167)
 
 ### Transparent
@@ -69,7 +69,7 @@ That's the main reason why we decided to use a proxy factory in solidity, which 
 
 ## CSW - Proxy factory contract <a name="csw-proxy-factory"></a>
 ### Goal
-The proxy factory contract's goal is to create proxies for users willing to build a Commown Shared Wallet. It also manages the proxy list, and saves the bound between a user and his sahred wallet. All this is permited by states mapping : `mapping(address => address[]) public commownProxiesPerUser`,`mapping(address => uint256) public nbProxiesPerUser`.
+The proxy factory contract's goal is to create proxies for users willing to build a Commown Shared Wallet. It also manages the proxy list, and saves the bound between a user and his shared wallet. All this is permited by states mapping : `mapping(address => address[]) public commownProxiesPerUser`,`mapping(address => uint256) public nbProxiesPerUser`.
 
 ### Create proxy
 Proxy are created using the `ERC1967Proxy` from OpenZeppelin which will call the `initilize` function with a selector, to create an instance of an UUPS.
