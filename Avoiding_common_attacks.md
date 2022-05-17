@@ -41,8 +41,8 @@ We do not use oracle at the time. But we will in the futur so we have to check o
 :white_check_mark: Done
 
 ### Denial Of Service attacks
-:white_square_button: To check
-CF Constructor : Todo
+All loops have a max define by max lenght of owners of 255. Moreover, no call yet to external contracts.
+:white_check_mark: Done
 
 ### Front Running attacks
 We don't have a menacism of rewards for being the first at something for example.  
@@ -60,9 +60,6 @@ Function internals are for proxy upgrade, or technical function like the initial
 ### Floating pragma
 Pragma is fixed at 0.8.13.  
 :white_check_mark: Done
-
-### Loop through long arrays
-:white_square_button: To check
 
 ### Wrong inheritance
 Inheritance from most generic to most specific : Initializable, UUPSUpgradeable, OwnableUpgradeable, IERC721Receiver to avoid linearization problem.  
