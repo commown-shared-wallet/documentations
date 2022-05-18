@@ -1,0 +1,3 @@
+[submodule "diagrams/diagrams"]
+	path = diagrams/diagrams
+	url = https://github.com/commown-shared-wallet/diagrams.git
