@@ -47,9 +47,11 @@ The goal of that contract is to handle all the logic of a Commown Shared Wallet.
 First, we prepare the global use case by deploying the CSW Proxy Factory hence the CSW logic, then we create a proxy from sign0 and get the proxy address. 
 #### 02__01-01: in the proxy it reads the initialize state of CommownSW
 That test basically confirms we can read state variables in the proxy contract by attaching this proxy address to the logic contract.
-#### 02__01-02: Owner(Admin) of CommownSW is ProxyFactory
-For now, the owner of the CSW Logic is the CSW Proxy Factory. We want to change that to ensure it is a multi sig possessed by the CSW Teams.
-#### 02__01-03: it handles different state per proxy
+#### 02__01-02: Owner(Admin) of CommownSW and CommownSWProxyFactory is sign0
+Owners (admin) of the CSW Logic and the CSW Proxy Factory is the sign0 from hardhat. In a future release, a good practice would be to set a multi sig owner for security purposes.
+#### 02__01-03: it can transfer ownership
+In the case of a changing of governance around these contracts as mentionned above, we will need to transfer ownership.
+#### 02__01-04: it handles different state per proxy
 We complete here the before each statement by creating a new proxy from sign0, and we want to see each proxy has its own state variables.
 
 ### 02_CommownSW__02_ReceiveAndWithdrawETH
