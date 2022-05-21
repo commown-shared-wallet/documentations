@@ -4,7 +4,7 @@
 [`docs-commown-shared-wallet`](https://docs-commown-shared-wallet.vercel.app) — NatSpec documentation for CSW smart contracts <br>
 
 `├──` [`assets`](./assets) — images used in markdown files <br>
-`├──` [`diagrams`](./diagrams) — diagrams <br>
+`├──` [`diagrams`](./diagrams) — diagrams (overview => functionnal diagrams) <br>
 `├──` [`docs`](./docs) — markdown files that explains our development <br>
 `├────` [`Avoiding_common_attacks.md`](./docs/Avoiding_common_attacks.md) — Avoiding common attacks <br>
 `├────` [`Deployed_addresses.md`](./docs/Deployed_addresses.md) — Deployed addresses<br>
