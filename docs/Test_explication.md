@@ -30,13 +30,21 @@ As sign0 is also the owner of the contract factory, this test here is to ensure 
 ### 01_CommownSWProxyFactory__03_stateVariable
 #### 01__03-01: it saves the proxy in the global proxiesList
 To ensure our application manage all the proxies created we need to store there contract addresses in a state mapping available in the CSW ProxyFactory.
-### 01__03-02: it saves the proxy in commownProxyPerUser for each 'owners'
+#### 01__03-02: it saves the proxy in commownProxyPerUser for each 'owners'
 Same test than before, but this time we save the proxy address for each user concerned by this CSW creation. Then, when a user connects to our front app, we can retrieve easily his wallet.
 #### 01__03-03: it increments the nb of proxy for each 'owners'
 Same test than before, we increments the number of proxy a user can have, because in the futur, a user could have several CSW if he wants.
 #### 01__03-04: it handles multi wallet created per user i.e. multi proxies
 That one is trickier as we create two proxies. The first one, created by sign0, has 3 addresses to define owners : sign0, sign1 and sign2. 2 of these 3 addresses, sign0 and sign1, are used by sign1 to create a second proxy. We get back two different proxy addresses, one for each wallet, and state variable are updated in the proxy factory with sign0 and sign1 getting two proxies, sign3 only got one created by sign0.
 
+### 01_CommownSWProxyFactory__04_upgradeLogicAndProxies
+This test block concerns the update and related safety logic. Before starting each test, we deploy the proxy factory and create a proxy for each user. 
+#### 01__04_01: it updates the CSW logic contract and all proxies already deployed from the CSW proxy factory
+For this first test we make sure that the upgrade mechanism works, that is, that the logical contract is upgradeable, and that we can update each of the proxies with the new implementation address of the logical contract. We use the OZ plugin forceImport function to get back the proxies created by the factory and make them embeddable by the plugin.
+#### 01__04_02: it updates the CSW logic address in the Factory contract and new users can use it to create new proxy (CSW)
+In this test we perform the same manipulation as in the first test but we make sure that the logical address of the CSW contract is updated in the factory and that the new users who create a CSW get a proxy of the upgraded contract.
+#### 01__04_03: After an update of a logic, a pre init contract can not call again initialize method
+Ici nous testons la sécurité du contrat logic, du fait qu'il ne puisse pas être réinitialisé par un utilisateur qui l'aurait déjà fait auparavant. Cela permet d'éviter qu'un utilisateur efface ses utilisateurs et retirent les fonds par exemple...
 
 # Commown Shared Wallet - Logic contract - Tests <a name="commownsw"></a>
 
