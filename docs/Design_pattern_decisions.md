@@ -90,8 +90,7 @@ The proxy factory contract's goal is to create proxies for users willing to buil
 Proxy are created using the `ERC1967Proxy` from OpenZeppelin which will call the `initialize` function with a selector, to create an instance of an UUPS.
 
 ### For future updates
-
-At this time, the proxy factory is not updatable, that means, if we want to update it we have to replace it with another, and be sure that the storage of the first one is get for the new proxy factory. It would be nicer to have that proxy factory, itself updatable or at least to be able to change that address of the logic contract though it delegates call.
+The proxy factory is not upgradeable as such. However, when we update the logical contract, we can update the reference of this updated contract. Moreover, the `createProxy` function has data bytes in parameter which allow to call the desired initialize function.
 
 ## CSW - Logic contract <a name="csw-logic-contract"></a>
 
