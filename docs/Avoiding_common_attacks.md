@@ -1,6 +1,31 @@
 # Avoiding Common Attacks
 
 Explaination of how we avoid the common attacks.
+All tests have been done both manually and with Mythril tool.
+
+## Mythril
+#### Installation
+Mythril on windows require docker installation, with a linux distribution on it. Then you can get Mythril.
+Start with that command :
+* if current dir is in `<full directory>\contracts-dapps>` run `docker run -v ${pwd}:/contracts-dapps mythril/myth analyze /contracts-dapps/contracts/CommownSW.sol`
+  * -v ${pwd} to get docker mount a volume at that directory (it is the powershell instruction)
+  * mythril/myth analyse is the call for analyze of mythril tool
+  * then we indicate the path of the contract we are going to analyze
+In order the command works :
+* you also need to do a remapping for all your import in your solidity files, for exemple for @openzeppelin imports :
+  ```
+  {
+	"remappings": [ "@openzeppelin/=/contracts-dapps/node_modules/@openzeppelin/" ],
+	  "optimizer": {
+	    "enabled": true
+	  }
+  }
+  ```
+* So the first command line changes :
+`docker run -v ${pwd}:/contracts-dapps mythril/myth analyze /contracts-dapps/contracts/CommownSW.sol --solc-json /contracts-dapps/contracts/test_file.json`
+
+#### Results
+If there is no problem you should see this message : `The analysis was completed successfully. No issues were detected.`
 
 ---
 
@@ -8,7 +33,7 @@ Legend:
 -   :white_square_button: To check
 -   :white_check_mark: Validated
 
-## List
+## Manually list
 
 ###  Saving unencrypted confidential data on the blockchain 
 We do not store any confidential information nor on chain, nor off chain.  
