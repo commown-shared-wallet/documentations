@@ -1,6 +1,5 @@
 # CommOwn - Docs
 
-
 [`docs-commown-shared-wallet`](https://docs-commown-shared-wallet.vercel.app) — NatSpec documentation for CSW smart contracts <br>
 
 `├──` [`assets`](./assets) — images used in markdown files <br>
