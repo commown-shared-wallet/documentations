@@ -131,7 +131,7 @@ Providing ether to the wallet by the owners will permit future transactions. Obv
 
 ## Creation of a "Pocket"
 
-A pocket is a Struct defining a futur investment pocket. A pocket has to be defined by the participants and then will be executed.
+A pocket is a way to store information regarding investments of the CSW. It is a contract that has to be defined by the participants and then will be executed to buy an NFT or an ERC token. It follows several states and implements state pattern.
 
 ## ERC20, ERC721 and ERC1155 receiver
 
