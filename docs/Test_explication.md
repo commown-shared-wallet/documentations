@@ -90,5 +90,19 @@ We create a pocket using the before each statement and store that pocket in the 
 We create a pocket using  the before each statement and emit an event.
 #### 02__03-03: it handles all requirement and revert if not validated
 We test here all the requires if it is not an owner, mismatch... etc.
-#### 02__03-04: it links the NFT of ERC721 to buy
-We test here the NFT we want to buy is stored in the mapping associated.
+#### 02__03-04: creator counts for one vote
+We test here the creator of the pocket's vote is incremented by one in the mean time he creates the pocket.
+#### 02__03-05: it saves the share per user correctly
+We test here it saves for each user the shares with the struc define in CSW
+
+### 02_CommownSW__04_votePocket
+#### 02__04-01: it can vote for a Pocket, increments number of vote, isSigned becomes true
+This test ensure the vote for a pocket is possible for a CSW owner
+#### 02__04-02: it reverts if not an owner
+Ensures that only a CSW owner can vote
+#### 02__04-03: it reverts if not an existing pocket
+Ensures that only a vote is possible for an existing pocket
+#### 02__04-04: it reverts if pocket already signed
+Ensures a CSW can not vote several times for the same pocket
+#### 02__04-05: it reverts if not at the good stage
+Ensures it reverts if not at the good stage, for exmeple, voting/signing is closed, or NFT or token already aquired.
